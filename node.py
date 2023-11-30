@@ -16,7 +16,7 @@ class RingNode:
         self.accept_port = 6650
         self.my_address = (ip_address, 6650)
         self.known_node = {}  # {neighbor_ip: neighbor_port}
-        self.node_list = ["10.0.138.121", "10.0.161.151"]
+        self.node_list = ["192.168.88.179", "192.168.88.172"]
         # my index in the node list
         self.index = self.node_list.index(self.my_ip_address)
         # creating accept socket
@@ -39,7 +39,7 @@ class RingNode:
         print(f"My process id: {self.my_node_id}\n")
         thread = threading.Thread(target=self.send_messages)
         thread.start()
-        # self.verify_id()
+        self.verify_id()
         self.handle_messages()
         # self.initiate()
 
@@ -303,5 +303,5 @@ class RingNode:
 
 if __name__ == "__main__":
     # Assuming first node starts with ID 1 and on localhost
-    node1 = RingNode(node_id=0, ip_address="10.0.138.121")
+    node1 = RingNode(node_id=0, ip_address="192.168.88.179")
     node1.start()
